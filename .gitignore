@@ -1,0 +1,41 @@
+# Virtual environment
+env/
+venv/
+ENV/
+
+# Python bytecode
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+
+# Django stuff
+*.log
+*.pot
+*.pyc
+*.db
+*.sqlite3
+
+# Environment variables
+.env
+.env.*
+
+# VSCode / PyCharm
+.vscode/
+.idea/
+
+# System files
+.DS_Store
+Thumbs.db
+
+# Pip and build
+pip-log.txt
+pip-delete-this-directory.txt
+build/
+dist/
+*.egg-info/
+.eggs/
+
+# Migrations (opsional kalau kamu tidak mau track-nya dulu)
+**/migrations/
+!**/migrations/__init__.py

@@ -3,7 +3,7 @@ import requests
 def fetch_cj_products():
     url = "https://developers.cjdropshipping.com/api2.0/v1/product/list"
     headers = {
-        "CJ-Access-Token": "84abe7c3d4b2465b9b2cf57862abce9d",  # Ganti dengan token aktif
+        "CJ-Access-Token": "6d0704928897419eba07bf66316aee3e",  # Ganti dengan token aktif
         "Content-Type": "application/json"
     }
     payload = {

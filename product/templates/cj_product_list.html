@@ -1,0 +1,37 @@
+<!-- templates/cj_product_list.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CJ Dropshipping Products</title>
+</head>
+<body>
+    <h1>Produk dari CJ Dropshipping</h1>
+
+    <form method="get">
+        <input type="text" name="q" value="{{ keyword }}" placeholder="Cari produk...">
+        <button type="submit">Cari</button>
+    </form>
+
+    {% if products %}
+        <ul>
+            {% for product in products %}
+                <li>
+                    <strong>{{ product.productName }}</strong><br>
+                    SKU: {{ product.sku }}<br>
+                    Harga: {{ product.sellPrice }}<br>
+                    <img src="{{ product.productImage }}" alt="{{ product.productName }}" width="100">
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>Tidak ada produk ditemukan.</p>
+    {% endif %}
+
+    <div>
+        <a href="?page={{ page|add:"-1" }}&q={{ keyword }}" {% if page <= 1 %}style="pointer-events: none; opacity: 0.5;"{% endif %}>Sebelumnya</a>
+        <strong>Halaman {{ page }}</strong>
+        <a href="?page={{ page|add:"1" }}&q={{ keyword }}">Berikutnya</a>
+    </div>
+</body>
+</html>

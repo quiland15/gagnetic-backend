@@ -1,7 +1,7 @@
 import requests
 
 def fetch_cj_products(page_num=1, keyword=""):
-    url = f"https://api.cjdropshipping.com/api/product/search"
+    url = f"https://api.cjdropshipping.com/api/product/list"
     payload = {
         "pageNum": page_num,
         "keyword": keyword,

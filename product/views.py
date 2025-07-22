@@ -23,7 +23,7 @@ def cj_product_list_view(request):
 
 def my_products_view(request):
     page = int(request.GET.get('page', 1))
-    products = fetch_my_products(page_num=page)
+    products = fetch_cj_products(page_num=page)
 
     context = {
         'products': products,

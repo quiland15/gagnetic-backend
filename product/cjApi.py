@@ -7,7 +7,7 @@ def fetch_cj_products(page_num=1, keyword=""):
         "keyword": keyword,
         "pageSize": 10,
         "sort": "new",
-        "productType" : "phone accessories"
+        # "productType" : "phone accessories"
     }
 
     headers = {

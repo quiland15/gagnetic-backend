@@ -78,7 +78,8 @@
                 <div class="sku">SKU: {{ product.sku }}</div>
                 <div class="price-original">Harga Asli: ${{ product.sellPrice }}</div>
                 <div class="price-sale">Harga Jual Kamu: ${{ product.yourPrice }}</div>
-                <div class="stock">Stok: {{ product.stock }}</div>
+                <div class="stock">Stok CJ: {{ product.stock }}</div>
+                <div class="stock">Stok Pabrik: {{ product.factoryStock }}</div>
                 <div class="warehouse">Gudang: {{ product.warehouseName }}</div>
             </div>
         {% endfor %}

@@ -55,6 +55,8 @@
         <button type="submit">Cari</button>
     </form>
 
+    <pre>{{ products|safe }}</pre>
+
     {% if products %}
         <ul>
             {% for product in products %}

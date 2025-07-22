@@ -6,7 +6,7 @@ ACCESS_TOKEN = "API@CJ4528776@CJ:eyJhbGciOiJIUzI1NiJ9.eyJqdGkiOiIyNjAxNCIsInR5cG
 
 # Ambil stok berdasarkan vid
 def fetch_stock_by_vid(vid):
-    time.sleep(1)  # Hindari limit request per detik
+    time.sleep(0.1)  # Hindari limit request per detik
 
     url = f"https://developers.cjdropshipping.com/api2.0/v1/product/stock/queryByVid?vid={vid}"
     headers = {
@@ -31,7 +31,7 @@ def fetch_stock_by_vid(vid):
 
 # Ambil produk dari "My Product"
 def fetch_cj_products(page_num=1):
-    time.sleep(1)  # Hindari QPS limit
+    time.sleep(0.1)  # Hindari QPS limit
 
     url = f"https://developers.cjdropshipping.com/api2.0/v1/product/myProduct/query?pageNum={page_num}&pageSize=10&language=en"
     headers = {

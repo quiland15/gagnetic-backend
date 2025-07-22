@@ -20,3 +20,13 @@ def cj_product_list_view(request):
         'page': page,
     }
     return render(request, 'cj_product_list.html', context)
+
+def my_products_view(request):
+    page = int(request.GET.get('page', 1))
+    products = fetch_my_products(page_num=page)
+
+    context = {
+        'products': products,
+        'page': page
+    }
+    return render(request, 'my_product_list.html', context)

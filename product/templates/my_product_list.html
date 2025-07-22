@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My CJ Products</title>
+</head>
+<body>
+    <h1>Produk Saya dari CJ Dropshipping</h1>
+
+    {% if products %}
+        <ul>
+        {% for product in products %}
+            <li>
+                <strong>{{ product.productName }}</strong><br>
+                SKU: {{ product.sku }}<br>
+                Total Stok: {{ product.stock }}<br>
+                Warehouse: {{ product.warehouseName }}<br>
+                <img src="{{ product.productImage }}" width="100">
+            </li>
+        {% endfor %}
+        </ul>
+    {% else %}
+        <p>Tidak ada produk ditemukan.</p>
+    {% endif %}
+</body>
+</html>

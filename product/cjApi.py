@@ -22,7 +22,7 @@ def fetch_cj_products(page_num=1):
         return []
 
     if data.get("code") == 200:
-        return data.get("data", {}).get("list", [])
+        return data.get("data", {}).get("content", [])
     else:
         print("My Products API error:", data.get("msg"))
         return []

@@ -1,9 +1,51 @@
 <!-- templates/cj_product_list.html -->
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
     <meta charset="UTF-8">
-    <title>CJ Dropshipping Products</title>
+    <title>Produk CJ Dropshipping</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 2rem;
+            background: #f4f4f4;
+        }
+        h1 {
+            text-align: center;
+        }
+        form {
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+        li {
+            background: white;
+            border-radius: 8px;
+            padding: 1rem;
+            margin-bottom: 1rem;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+        }
+        img {
+            max-width: 100px;
+            margin-top: 0.5rem;
+        }
+        .pagination {
+            text-align: center;
+            margin-top: 2rem;
+        }
+        .pagination a {
+            margin: 0 1rem;
+            text-decoration: none;
+            color: #007BFF;
+        }
+        .pagination a.disabled {
+            pointer-events: none;
+            opacity: 0.5;
+        }
+    </style>
 </head>
 <body>
     <h1>Produk dari CJ Dropshipping</h1>
@@ -20,18 +62,18 @@
                     <strong>{{ product.productName }}</strong><br>
                     SKU: {{ product.sku }}<br>
                     Harga: {{ product.sellPrice }}<br>
-                    <img src="{{ product.productImage }}" alt="{{ product.productName }}" width="100">
+                    <img src="{{ product.productImage }}" alt="{{ product.productName }}">
                 </li>
             {% endfor %}
         </ul>
     {% else %}
-        <p>Tidak ada produk ditemukan.</p>
+        <p style="text-align:center;">Tidak ada produk ditemukan.</p>
     {% endif %}
 
-    <div>
-        <a href="?page={{ page|add:"-1" }}&q={{ keyword }}" {% if page <= 1 %}style="pointer-events: none; opacity: 0.5;"{% endif %}>Sebelumnya</a>
+    <div class="pagination">
+        <a href="?page={{ page|add:"-1" }}&q={{ keyword }}" class="{% if page <= 1 %}disabled{% endif %}">⬅️ Sebelumnya</a>
         <strong>Halaman {{ page }}</strong>
-        <a href="?page={{ page|add:"1" }}&q={{ keyword }}">Berikutnya</a>
+        <a href="?page={{ page|add:"1" }}&q={{ keyword }}">Berikutnya ➡️</a>
     </div>
 </body>
 </html>

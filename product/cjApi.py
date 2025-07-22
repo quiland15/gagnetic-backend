@@ -9,7 +9,8 @@ def fetch_cj_products(page_num=1, keyword=""):
     params = {
         "pageNum": page_num,
         "keyword": keyword,
-        "pageSize": 10
+        "pageSize": 10,
+        "productType": "phone accessories"
     }
 
     headers = {

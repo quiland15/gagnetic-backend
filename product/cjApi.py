@@ -68,6 +68,13 @@ def fetch_cj_products(page_num=1):
                 p["stock"] = "N/A"
                 p["warehouseName"] = "Unknown"
 
+            try:
+                price_range = p.get("sellPrice", "0-0").split('-')
+                base_price = float(price_range[0])
+                p["yourPrice"] = round(base_price * 1.5, 2)
+            except:
+                p["yourPrice"] = "N/A"
+
         return products
 
     else:

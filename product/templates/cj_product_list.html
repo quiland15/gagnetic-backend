@@ -61,7 +61,7 @@
         <ul>
             {% for product in products %}
                 <li>
-                    <strong>{{ product.productName }}</strong><br>
+                    <strong>{{ product.productName|default:"No name" }}</strong><br>
                     SKU: {{ product.sku }}<br>
                     Harga: {{ product.sellPrice }}<br>
                     <img src="{{ product.productImage }}" alt="{{ product.productName }}">

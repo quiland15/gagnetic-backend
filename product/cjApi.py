@@ -10,7 +10,6 @@ def fetch_cj_products(page_num=1, keyword=""):
         "pageNum": page_num,
         "keyword": keyword,
         "pageSize": 10,
-        "productType": "phone accessories",
         "language": "en"
     }
 

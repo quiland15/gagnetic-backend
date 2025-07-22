@@ -1,7 +1,7 @@
 import requests
 import time
 
-def fetch_my_products(page_num=1):
+def fetch_cj_products(page_num=1):
     time.sleep(1)  # Hindari QPS limit
 
     url = "https://developers.cjdropshipping.com/api2.0/v1/product/storehouse/productList"

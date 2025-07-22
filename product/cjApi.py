@@ -4,7 +4,7 @@ import time
 def fetch_cj_products(page_num=1):
     time.sleep(1)  # Hindari QPS limit
 
-    url = "https://developers.cjdropshipping.com/api2.0/v1/product/myProduct"
+    url = "https://developers.cjdropshipping.com/api2.0/v1/product/myProduct/query"
 
     params = {
         "pageNum": page_num,

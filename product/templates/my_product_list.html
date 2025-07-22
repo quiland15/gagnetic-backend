@@ -56,11 +56,11 @@
         <div class="product-grid">
         {% for product in products %}
             <div class="product-card">
-                <img src="{{ product.productImage }}" alt="{{ product.productName }}">
-                <div class="product-title">{{ product.productName }}</div>
+                <img src="{{ product.bigImage }}" alt="{{ product.nameEn }}">
+                <div class="product-title">{{ product.nameEn }}</div>
                 <div class="sku">SKU: {{ product.sku }}</div>
-                <div class="stock">Stok: {{ product.stock }}</div>
-                <div class="warehouse">Gudang: {{ product.warehouseName }}</div>
+                <div class="stock">Harga: ${{ product.sellPrice }}</div>
+                <div class="warehouse">Gudang: {{ product.defaultArea }}</div>
             </div>
         {% endfor %}
         </div>

@@ -5,6 +5,8 @@ from django.views.decorators.csrf import csrf_exempt
 from django.http import JsonResponse
 import json
 from django.core.paginator import Paginator
+from apscheduler.schedulers.background import BackgroundScheduler
+from django_apscheduler.jobstores import DjangoJobStore
 
 def my_products_view(request):
     page = int(request.GET.get('page', 1))
@@ -47,3 +49,19 @@ def sync_cj_products(request):
         return JsonResponse({"message": "Data berhasil disimpan ke database", "count": len(products)})
 
     return JsonResponse({"error": "Hanya menerima POST request"}, status=405)
+
+def start():
+    scheduler = BackgroundScheduler()
+    scheduler.add_jobstore(DjangoJobStore(), "default")
+
+    # Tambahkan job tiap 5 menit
+    scheduler.add_job(
+        sync_cj_products_job,
+        trigger="interval",
+        minutes=5,
+        id="sync_cj_products",
+        replace_existing=True,
+    )
+
+    scheduler.start()
+    print("Scheduler started.")

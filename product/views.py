@@ -1,25 +1,9 @@
-from rest_framework.views import APIView
-from rest_framework.response import Response
 from .cjApi import fetch_cj_products
 from django.shortcuts import render
-
-class ProductListAPIView(APIView):
-    def get(self, request):
-        products = fetch_cj_products()
-        return Response(products)
-
-def cj_product_list_view(request):
-    keyword = request.GET.get('q', '')
-    page = int(request.GET.get('page', 1))
-
-    products = fetch_cj_products(page_num=page, keyword=keyword)
-    
-    context = {
-        'products': products,
-        'keyword': keyword,
-        'page': page,
-    }
-    return render(request, 'cj_product_list.html', context)
+from .models import Product
+from django.views.decorators.csrf import csrf_exempt
+from django.http import JsonResponse
+import json
 
 def my_products_view(request):
     page = int(request.GET.get('page', 1))
@@ -30,3 +14,29 @@ def my_products_view(request):
         'page': page
     }
     return render(request, 'my_product_list.html', context)
+
+@csrf_exempt
+def sync_cj_products(request):
+    if request.method == 'POST':
+        page = int(request.GET.get('page', 1))
+        products = fetch_cj_products(page_num=page)
+
+        for p in products:
+            # Gunakan get_or_create untuk menghindari duplikat
+            obj, created = Product.objects.update_or_create(
+                cj_id=p.get("vid"),
+                defaults={
+                    "name_en": p.get("nameEn", ""),
+                    "sku": p.get("sku", ""),
+                    "big_image": p.get("bigImage", ""),
+                    "sell_price": float(p.get("sellPrice", "0").split('-')[0]),
+                    "your_price": float(p.get("yourPrice", 0)),
+                    "stock": p.get("stock", 0),
+                    "factory_stock": p.get("factoryStock", 0),
+                    "warehouse_name": p.get("warehouseName", "")
+                }
+            )
+        
+        return JsonResponse({"message": "Data berhasil disimpan ke database", "count": len(products)})
+
+    return JsonResponse({"error": "Hanya menerima POST request"}, status=405)

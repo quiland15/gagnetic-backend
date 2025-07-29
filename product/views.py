@@ -4,14 +4,21 @@ from .models import Product
 from django.views.decorators.csrf import csrf_exempt
 from django.http import JsonResponse
 import json
+from django.core.paginator import Paginator
 
 def my_products_view(request):
     page = int(request.GET.get('page', 1))
-    products = fetch_cj_products(page_num=page)
+    
+    # Ambil semua data dari database
+    product_list = Product.objects.all().order_by('-last_updated')
+
+    # Pagination: 12 per halaman (ubah sesuai kebutuhan)
+    paginator = Paginator(product_list, 12)
+    products = paginator.get_page(page)
 
     context = {
         'products': products,
-        'page': page
+        'page': page,
     }
     return render(request, 'my_product_list.html', context)
 

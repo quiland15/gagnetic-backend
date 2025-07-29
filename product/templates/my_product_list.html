@@ -73,14 +73,14 @@
         <div class="product-grid">
         {% for product in products %}
             <div class="product-card">
-                <img src="{{ product.bigImage }}" alt="{{ product.nameEn }}">
-                <div class="product-title">{{ product.nameEn }}</div>
+                <img src="{{ product.big_image }}" alt="{{ product.name_en }}">
+                <div class="product-title">{{ product.name_en }}</div>
                 <div class="sku">SKU: {{ product.sku }}</div>
-                <div class="price-original">Harga Asli: ${{ product.sellPrice }}</div>
-                <div class="price-sale">Harga Jual Kamu: ${{ product.yourPrice }}</div>
+                <div class="price-original">Harga Asli: ${{ product.sell_price }}</div>
+                <div class="price-sale">Harga Jual Kamu: ${{ product.your_price }}</div>
                 <div class="stock">Stok CJ: {{ product.stock }}</div>
-                <div class="stock">Stok Pabrik: {{ product.factoryStock }}</div>
-                <div class="warehouse">Gudang: {{ product.warehouseName }}</div>
+                <div class="stock">Stok Pabrik: {{ product.factory_stock }}</div>
+                <div class="warehouse">Gudang: {{ product.warehouse_name }}</div>
             </div>
         {% endfor %}
         </div>

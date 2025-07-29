@@ -56,7 +56,7 @@ def start():
 
     # Tambahkan job tiap 5 menit
     scheduler.add_job(
-        sync_cj_products_job,
+        sync_cj_products,
         trigger="interval",
         minutes=5,
         id="sync_cj_products",

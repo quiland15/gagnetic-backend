@@ -1,6 +1,6 @@
 from django.core.management.base import BaseCommand
-from .views import fetch_cj_products
-from .models import Product
+from product.views import fetch_cj_products
+from product.models import Product
 
 class Command(BaseCommand):
     help = 'Sync CJ products every 5 minutes'

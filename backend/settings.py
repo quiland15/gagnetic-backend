@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'product',
     'django_apscheduler',
+    "corsheaders",
 ]
 
 MIDDLEWARE = [
@@ -51,6 +52,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    "corsheaders.middleware.CorsMiddleware",
 ]
 
 ROOT_URLCONF = 'backend.urls'
@@ -144,3 +146,7 @@ LOGGING = {
         'level': 'WARNING',
     },
 }
+
+CORS_ALLOWED_ORIGINS = [
+    "https://quiland.site",
+]

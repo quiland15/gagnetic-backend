@@ -151,3 +151,5 @@ CORS_ALLOWED_ORIGINS = [
     "https://quiland.site",
     "https://api.quiland.site",
 ]
+
+CORS_ALLOW_ALL_ORIGINS = True  # <-- GUNAKAN HANYA SAAT DEVELOPMENT
